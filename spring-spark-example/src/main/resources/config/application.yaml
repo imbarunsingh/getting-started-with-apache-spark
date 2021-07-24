@@ -1,0 +1,7 @@
+kafka:
+  consumer:
+      auto-offset-reset: latest
+      group-id: my-consumer-group1
+      json-group-id: json-group-1
+      bootstrap-servers: localhost:9092
+      topic: first_topic
