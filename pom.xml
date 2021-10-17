@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.spark</groupId>
-	<artifactId>getting-started-with-spark</artifactId>
+	<artifactId>getting-started-with-apache-spark</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>getting-started-with-spark</name>
+	<name>getting-started-with-apache-spark</name>
 	<description>Getting Started with Apache Spark</description>
 
 	<parent>
@@ -24,7 +24,7 @@
 	</properties>
 
 	<modules>
-		<module>java-spark-api</module>
+		<module>spark-core-api</module>
 		<module>spring-spark-example</module>		
 	</modules>
 
