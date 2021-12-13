@@ -21,7 +21,7 @@ import java.util.List;
 
 import com.spark.config.SparkConfig;
 
-public class MultipleGrouping {
+public class MultipleGroupingJavaAPI {
 	public static void main(String[] args) {
 		
 		Logger.getLogger("org.apache").setLevel(Level.WARN);
@@ -33,16 +33,16 @@ public class MultipleGrouping {
 								.option("header", true)
 								.csv("src/main/resources/biglog.txt");
 		
-		dataset.createOrReplaceTempView("logging_table");
-		// Refer for more on date formating and Spark SQL
-		//https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html
-		// aggregate function has to be used only on column that is not part of group by clause or can use count(1) 
-		Dataset<Row> groupedResult = sparkSession.sql("select level, date_format(datetime, 'MMMM') as Month, count(1) as total from logging_table"
-													+ " GROUP BY level, month");
+		//java way of writing sql statements
+		Dataset<Row> groupedResultUsingJavaAPI = dataset.select(col("level"),
+					                                            date_format(col("datetime"), "MMMM").alias("month"),
+					                                            date_format(col("datetime"), "M").alias("monthnum").cast(DataTypes.IntegerType));
 		
-		groupedResult.show();
-		
-		//groupedResult.write().format("com.databricks.spark.csv").option("header", true).save("src/main/resources/results");
+		groupedResultUsingJavaAPI = groupedResultUsingJavaAPI.groupBy("level", "month", "monthnum")
+															.count().as("total")
+															.orderBy("monthnum")
+															.drop("monthnum");
+		groupedResultUsingJavaAPI.show();
 		
 		sparkSession.close();
 	}

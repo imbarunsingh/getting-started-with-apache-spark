@@ -1,16 +1,11 @@
 package com.spark.sql;
 
-import static org.apache.spark.sql.functions.col;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoder;
 import org.apache.spark.sql.Encoders;
@@ -51,7 +46,7 @@ public class SaveToFileWithCustomObject {
 		filtered.show();
 		
 							
-		filtered.coalesce(1)
+		filtered.coalesce(1) // merge to single output file : requires grouping and brings all dataset to one partition 
 				.write()
 				.format("com.databricks.spark.csv")
 				.option("header", true)
