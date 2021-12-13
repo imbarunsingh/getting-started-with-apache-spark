@@ -6,7 +6,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 public class SparkConfig {
 	
 	public static JavaSparkContext initSparkContext() {
-		SparkConf sparkConf = new SparkConf().setAppName("Spark-Core")
+		SparkConf sparkConf = new SparkConf().setAppName("Spark Core Demo)
 											 .setMaster("local[*]");
 		JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
 		return sparkContext;
