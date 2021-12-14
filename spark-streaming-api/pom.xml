@@ -7,11 +7,11 @@
 		<artifactId>getting-started-with-apache-spark</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>spark-streaming</artifactId>
-	
-	<name>Spark Streaming</name>
-	<description>Getting Started with Spark Streaming</description>
 
+	<artifactId>spark-streaming-api</artifactId>
+	<name>Spark Streaming API</name>
+
+	<description>Getting Started with Spark Streaming API</description>
 
 	<dependencies>
 		<dependency>
@@ -33,5 +33,4 @@
 		</dependency>
 
 	</dependencies>
-
 </project>
