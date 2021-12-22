@@ -36,7 +36,11 @@ public class ViewRecordStreaming {
 																								LocationStrategies.PreferConsistent(),
 																								ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams));
 
-		JavaPairDStream<Object, Object> results = stream.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
+		JavaPairDStream<Long, String> results = stream.mapToPair(record -> new Tuple2<>(record.value(), 1L))
+													  .reduceByKey((x, y) -> x + y)
+													  .mapToPair(item -> item.swap())
+													  .transformToPair(rdd -> rdd.sortByKey(false));
+		
 
 		results.print();
 
