@@ -39,7 +39,7 @@ public class WindowingBatches {
 		//generating word counts over the last 30 seconds of data, with default slideDuration set to batch size i.e 2 seconds 
 		//pairDStream = pairDStream.reduceByKeyAndWindow((x, y) -> x + y, Durations.seconds(30));
 		
-		//generating word counts over the last 30 seconds of data, every 10 seconds
+		//generating word counts over the last 30 seconds of data, every 10 seconds. We would see results of last 30 seconds every 10seconds
 		pairDStream = pairDStream.reduceByKeyAndWindow((x, y) -> x + y, Durations.seconds(30), Durations.seconds(10));
 		
 		//prints the data processed in last 2  seconds and keeps overwriting the previous RDD
