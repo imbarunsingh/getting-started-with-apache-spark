@@ -29,6 +29,7 @@
 		<module>spring-spark-example</module>
 		<module>spark-SQL-api</module>
 		<module>spark-streaming-api</module>
+		<module>spark-kafka-streaming</module>
 	</modules>
 
 	<dependencies>
