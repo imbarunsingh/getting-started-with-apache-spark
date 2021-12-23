@@ -37,7 +37,7 @@ public class OutputSinkDemo {
 		
 		StreamingQuery query = results.writeStream()
 									  .format("console")
-									  .outputMode(OutputMode.Append())
+									  .outputMode(OutputMode.Append()) // output mode
 									  .start();
 		
 		query.awaitTermination();
