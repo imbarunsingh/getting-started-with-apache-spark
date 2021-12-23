@@ -30,6 +30,7 @@
 		<module>spark-SQL-api</module>
 		<module>spark-streaming-api</module>
 		<module>spark-kafka-streaming</module>
+		<module>spark-structured-streaming</module>
 	</modules>
 
 	<dependencies>
